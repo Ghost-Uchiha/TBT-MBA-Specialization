@@ -1,4 +1,5 @@
-    <head>
+  <html>
+  <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
@@ -8,13 +9,20 @@
         
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css">
         
         <script src="main.js"></script>
         
     </head>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top ">
+    <body>
+        
+       <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top ">
 
         <!-- Text Logo - Use this if you don't have a graphic logo -->
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Corso</a> -->
@@ -48,20 +56,6 @@
                     <a class="nav-link page-scroll" href="https:/tbtprep.com/contact-us">CONTACT</a>
                 </li>
             </ul>
-            <span class="nav-item social-icons">
-                <span class="fa-stack">
-                    <a href="#your-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-facebook-f fa-stack-1x"></i>
-                    </a>
-                </span>
-                <span class="fa-stack">
-                    <a href="#your-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-twitter fa-stack-1x"></i>
-                    </a>
-                </span>
-            </span>
         </div>
     </nav> 
    
@@ -88,6 +82,7 @@
                 <div id="count" class="hidden"></div>
             </div>
             <div class="hidden" id="hid">
+                <div class="hid">
             <div id="req" >
                 <p id="phid" >Phone Number:</p>
                 <input type="tel" id="ph" required onkeypress="restrictPhoneNumberInput(event)"><br><br>
@@ -95,6 +90,7 @@
                 <input type="email" id="gmail" required><br><br>
                 <button  id="sub" type="submit" onclick="display()">Submit</button>
               </div> 
+                </div>
             </div>
             <div id="results-container"></div>
                 </div>
@@ -102,4 +98,6 @@
             
           </div>
     </header> <!-- end of header -->
-    <!-- end of header -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+</body>
+    </html>
