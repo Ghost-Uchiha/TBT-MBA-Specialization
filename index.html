@@ -1,0 +1,103 @@
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+
+        <!-- Website Title -->
+        <title>MBA-Specelzation Test</title>
+        
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="main.css">
+        
+        <script src="main.js"></script>
+        
+    </head>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top ">
+
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Corso</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="https:/tbtprep.com">The Bodhi Tree</a> 
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/gre">GRE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="index.html">MBA Specialization</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/contact-us">CONTACT</a>
+                </li>
+            </ul>
+            <span class="nav-item social-icons">
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                    </a>
+                </span>
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span>
+        </div>
+    </nav> 
+   
+    <header id="header" class="header">
+       
+        
+        <div id="container" class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 id="heading">The Bodhi Tree's MBA Specialization Test</h1>
+            <p id="main-header">If you want to know which Mba Specialization suits you just take TBT's MBA Specialization Test. It requires only 2-3 minutes.</p>
+            <div id="detail">
+                <p id="number">1 of 20</p>
+                            
+                <p id="question">Do you have good communication skills ?</p>
+            </div>
+            
+            <a class="btn-solid-lg page-scroll" ><button class="bt" onclick="changeQuestion('Agree')" value="agree">Agree</button></a>
+            <a class="btn-solid-lg page-scroll" ><button class="bt" onclick="changeQuestion('Maybe')" value="maybe">Maybe</button></a>
+            <a class="btn-solid-lg page-scroll" ><button class="bt" onclick="changeQuestion('Disagree')" value="disagree">Disagree</button></a>
+            <div class="hidden">
+                <div id="count" class="hidden"></div>
+            </div>
+            <div class="hidden" id="hid">
+            <div id="req" >
+                <p id="phid" >Phone Number:</p>
+                <input type="tel" id="ph" required onkeypress="restrictPhoneNumberInput(event)"><br><br>
+                <p id="gmailid" for="gmail">Email:</p>
+                <input type="email" id="gmail" required><br><br>
+                <button  id="sub" type="submit" onclick="display()">Submit</button>
+              </div> 
+            </div>
+            <div id="results-container"></div>
+                </div>
+            </div>
+            
+          </div>
+    </header> <!-- end of header -->
+    <!-- end of header -->
