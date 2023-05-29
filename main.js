@@ -82,7 +82,7 @@ for (var i = 0; i < buttons.length; i++) {
         document.getElementById('container').style.backgroundColor = "transparent";
         document.getElementById('hid').classList.remove('hidden');
 		document.getElementById('heading').classList.add('hidden')
-        document.getElementById('count').classList.add('hidden');
+       
         document.getElementById('req').style.border = "1px solid #000";
         document.getElementById('req').style.borderRadius = "10px";
     }
@@ -130,41 +130,52 @@ function restrictPhoneNumberInput(event) {
     }
   }
 
-  
-function displayResults() {
+  function displayResults() {
+	const maxScores = [];
 	let maxScore = 0;
-	let maxLetter = '';
+  
+	// Find the maximum score
 	for (const letter in counts) {
 	  if (counts[letter] > maxScore) {
 		maxScore = counts[letter];
-		maxLetter = letter;
 	  }
 	}
   
-	const category = categories.find((cat) => cat.name === maxLetter);
+	// Find letters with the maximum score
+	for (const letter in counts) {
+	  if (counts[letter] === maxScore) {
+		maxScores.push(letter);
+	  }
+	}
   
 	const resultsContainer = document.getElementById('results-container');
-	
-	if (category) {
-	  const resultElement = document.createElement("div");
-	  resultElement.className = "result-item";
-	  resultElement.innerHTML = `
-		<img src="${category.image}" alt="${category.description}">
-		<h3>${category.name}</h3>
-		<p>${category.description}</p>
-	  `;
-	  resultsContainer.appendChild(resultElement);
+  
+	if (maxScores.length > 0) {
+	  // Display results for each letter with the maximum score
+	  maxScores.forEach((letter) => {
+		const category = categories.find((cat) => cat.name === letter);
+  
+		if (category) {
+		  const resultElement = document.createElement("div");
+		  resultElement.className = "result-item";
+		  resultElement.innerHTML = `
+			<img src="${category.image}" alt="${category.description}">
+			<h3>${category.name}</h3>
+			<p>${category.description}</p>
+		  `;
+		  resultsContainer.appendChild(resultElement);
+		}
+	  });
 	} else {
 	  const resultElement = document.createElement("div");
 	  resultElement.className = "result-item";
-	  resultElement.textContent = "Invalid letter entered.";
+	  resultElement.textContent = "No valid letters entered.";
 	  resultsContainer.appendChild(resultElement);
 	}
   
 	// Modify styles and hide/show elements if needed
 	document.getElementById("heading").innerHTML = "";
 	document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
-	document.getElementById("count").style.display = "none";
 	document.getElementById("hid").classList.add("hidden");
 	document.getElementById("container").style.height = "560px";
   
@@ -177,6 +188,54 @@ function displayResults() {
 	  div.style.width = "300px";
 	});
   }
+   
+
+// function displayResults() {
+// 	let maxScore = 0;
+// 	let maxLetter = '';
+// 	for (const letter in counts) {
+// 	  if (counts[letter] > maxScore) {
+// 		maxScore = counts[letter];
+// 		maxLetter = letter;
+// 	  }
+// 	}
+  
+// 	const category = categories.find((cat) => cat.name === maxLetter);
+  
+// 	const resultsContainer = document.getElementById('results-container');
+	
+// 	if (category) {
+// 	  const resultElement = document.createElement("div");
+// 	  resultElement.className = "result-item";
+// 	  resultElement.innerHTML = `
+// 		<img src="${category.image}" alt="${category.description}">
+// 		<h3>${category.name}</h3>
+// 		<p>${category.description}</p>
+// 	  `;
+// 	  resultsContainer.appendChild(resultElement);
+// 	} else {
+// 	  const resultElement = document.createElement("div");
+// 	  resultElement.className = "result-item";
+// 	  resultElement.textContent = "Invalid letter entered.";
+// 	  resultsContainer.appendChild(resultElement);
+// 	}
+  
+// 	// Modify styles and hide/show elements if needed
+// 	document.getElementById("heading").innerHTML = "";
+// 	document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
+// 	document.getElementById("count").style.display = "none";
+// 	document.getElementById("hid").classList.add("hidden");
+// 	document.getElementById("container").style.height = "560px";
+  
+// 	const resultDivs = document.querySelectorAll("#results-container > div");
+// 	resultDivs.forEach((div) => {
+// 	  div.style.backgroundColor = "transparent";
+// 	  div.style.borderRadius = "10px";
+// 	  div.style.padding = "1rem";
+// 	  div.style.textAlign = "center";
+// 	  div.style.width = "300px";
+// 	});
+//   }
   
   
     
