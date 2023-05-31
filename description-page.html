@@ -1,0 +1,110 @@
+<html>
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+
+        <!-- Website Title -->
+        <title>MBA-Specelzation Test</title>
+        
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,700i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="main.css">
+        <style>
+        
+          img {
+            width: 100%; 
+            height: auto; 
+          }
+        </style>
+        
+        <script src="main.js"></script>
+        
+    </head>
+    <body  id="body"">
+        
+       <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top ">
+
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Corso</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="https:/tbtprep.com">The Bodhi Tree</a> 
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/gre">GRE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="index.html">MBA Specialization</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="https:/tbtprep.com/contact-us">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+   
+    <header id="header" class="header">
+       
+        
+        <div id="container" class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  
+                    <h1 id="heading">Category Result</h1>
+                    <div id="image"></div>
+                    <p id="main-header"></p>
+            <p id="description"></p>
+                </div>
+            </div>
+            
+          </div>
+    </header> <!-- end of header -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+    <script>
+       // Get the category name from the URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryName = urlParams.get('category');
+
+    // Find the category object by name
+    const category = categories.find((cat) => cat.name === categoryName);
+
+    // Display the category description
+    if (category) {
+      const descriptionElement = document.getElementById('description');
+      const imageContainer = document.getElementById('image');
+      const imageElement = document.createElement('img');
+      imageElement.src = category.image;
+      imageElement.alt = category.name;
+      imageContainer.appendChild(imageElement);
+      document.getElementById('main-header').textContent = category.name
+      descriptionElement.textContent = category.description;
+    } else {
+      console.error('Category not found');
+    }
+    
+    </script>  
+</body>
+    </html>

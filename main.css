@@ -26,6 +26,7 @@
     color: #212529;
     text-align: left;
     background-color: #fff;
+    overflow-x: hidden;
   }
 
 .col-lg-12{
@@ -49,7 +50,7 @@ p{
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./header-background.jpg) center center no-repeat;
     background-size: cover;
     text-align: center;
-    height: 150vh;
+    height: 180vh;
 }
   .container {
     width: 100%;
@@ -238,13 +239,11 @@ h1 {
   color: #000;
   padding: 1.2rem;
   font-size: 1.3rem;
+  text-align: justify;
 }
 #req:hover{
   cursor: crosshair;
   transform: scale(1.1);
-}
-.result-item{
-  background-color: transparent;
 }
 #results-container {
   display: flex;
@@ -254,22 +253,34 @@ h1 {
   gap: 1rem;
   margin-top: 1rem;
 }
-
-
+.pre{
+  position: relative;
+  top: 10px;
+  width: 200px;
+  border: none;
+  -webkit-appearance: none;
+}
+#question{
+  height: 70px;
+  overflow: none;
+}
+.result-item{
+  height: 510px;
+  background-color: transparent;
+}
 #results-container > div img {
   max-width: 100%;
+  
 }
 
 #results-container > div h3 {
   margin-top: 1rem;
   font-size: 1.5rem;
-  color: #fff;
 }
 
 #results-container> div p {
   margin-top: 0.5rem;
   font-size: 1.2rem;
-  color: #fff;
 }
 @media (min-width: 992px){
 .navbar-custom {
@@ -277,9 +288,16 @@ h1 {
     background: transparent;
     box-shadow: none;
 }}
+.pre{
+  position: relative;
+  top: 10px;
+  width: 200px;
+  border: none;
+  -webkit-appearance: none;
+}
 .navbar-custom {
-  background-color: #000000f0;
-  box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.04);
+   background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./header-background.jpg) center center no-repeat;
+    background-size: cover;
   font: 600 0.875rem/0.875rem "Montserrat", sans-serif;
   transition: all 0.2s;
 }

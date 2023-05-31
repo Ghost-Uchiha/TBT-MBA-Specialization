@@ -20,7 +20,7 @@
         <script src="main.js"></script>
         
     </head>
-    <body>
+    <body  id="body" style=" overflow: auto;">
         
        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top ">
 
@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 id="heading">The Bodhi Tree's MBA Specialization Test</h1>
-            <p id="main-header">If you want to know which Mba Specialization suits you just take TBT's MBA Specialization Test. It requires only 2-3 minutes.</p>
+            <p id="main-header">If you want to know which MBA Specialization suits you , just take TBT's MBA Specialization Test. It requires only 2-3 minutes.</p>
             <div id="detail">
                 <p id="number">1 of 20</p>
                             
@@ -81,18 +81,24 @@
             <div class="hidden">
                 <div id="count"></div>
             </div>
+            <div id="results-container"></div>
             <div class="hidden" id="hid">
                 <div class="hid">
-            <div id="req" >
-                <p id="phid" >Phone Number:</p>
-                <input type="tel" id="ph" required onkeypress="restrictPhoneNumberInput(event)"><br><br>
-                <p id="gmailid" for="gmail">Email:</p>
-                <input type="email" id="gmail" required><br><br>
-                <button  id="sub" type="submit" onclick="display()">Submit</button>
-              </div> 
+                    <div id="req" >
+                        <p id="phid" >Phone Number:</p>
+                        <input type="tel" id="ph" required onkeypress="restrictPhoneNumberInput(event)" oninput="showDropdownph()">
+                        <select class="pre" id="previousPhoneNumbers" style="display:none"></select>
+                        <br><br>
+                        <p id="gmailid" for="gmail">Email:</p>
+                        <input type="email" id="gmail" required oninput="showDropdownemail()">
+                        <select class="pre" id="previousEmails" style="display: none;"></select>
+                        <br><br>
+                        <button  id="sub" type="submit" onclick="display()">Submit</button>
+                      </div> 
+                      <div id="popup-container"></div>
+                      
                 </div>
             </div>
-            <div id="results-container"></div>
                 </div>
             </div>
             
