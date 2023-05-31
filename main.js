@@ -41,6 +41,7 @@ const questions = [
   var resultsElement = document.getElementById("result");
   var score = 0; // initialize score variable to 0
   var falsecount = 0
+  
  function changeQuestion(answer) {
     if (answer === "Agree") {
         currentQuestion.value.forEach((value) => {
@@ -83,7 +84,7 @@ for (var i = 0; i < buttons.length; i++) {
         document.getElementById('container').style.backgroundColor = "transparent";
         document.getElementById('hid').classList.remove('hidden');
 		document.getElementById('heading').classList.add('hidden')
-       
+		document.getElementById('guide').classList.add('hidden')
         document.getElementById('req').style.border = "1px solid #000";
         document.getElementById('req').style.borderRadius = "10px";
 		
@@ -291,21 +292,10 @@ function displayResults() {
 		  const resultElement = document.createElement("div");
 		  resultElement.className = "result-item";
 		  resultElement.innerHTML = `
-			<img src="${category.image}" alt="${category.description}" >
+			<img src="${category.image}" alt="${category.description}">
+			<h3>${category.name}</h3>
+			<p>${category.description}</p>
 		  `;
-		  const descriptionButton = document.createElement("button");
-		  descriptionButton.className = "result-button"
-		  descriptionButton.style.backgroundColor = "transparent";
-        descriptionButton.style.borderRadius = "10px";
-        descriptionButton.style.textAlign = "center";
-        descriptionButton.style.width = "200px";
-        descriptionButton.style.margin = "20px auto 10px";
-		descriptionButton.style.color = "#fff"
-        descriptionButton.textContent = "Show Description";
-        descriptionButton.addEventListener("click", () => {
-          showDescription(category.name);
-        });
-		resultElement.appendChild(descriptionButton);
 		  resultsContainer.appendChild(resultElement);
 		}
 	  });
@@ -321,21 +311,17 @@ function displayResults() {
 	document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
 	document.getElementById("hid").classList.add("hidden");
 	document.getElementById("container").style.height = "560px";
-  
+	document.getElementById('guide').classList.remove('hidden')
+	  
+ 
 	const resultDivs = document.querySelectorAll("#results-container > div");
 	resultDivs.forEach((div) => {
 	  div.style.backgroundColor = "transparent";
 	  div.style.borderRadius = "10px";
+	  
 	  div.style.textAlign = "center";
 	  div.style.width = "300px";
 	});
-  }
-  
-  function showDescription(categoryName) {
-	// Redirect to another page with the category name as a parameter
-	const url = "description-page.html?category=" + categoryName;
-	// Open the URL in a new tab
-	window.open(url, "_blank");
   }
   
   
