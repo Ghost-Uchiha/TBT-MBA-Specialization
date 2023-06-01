@@ -54,7 +54,7 @@ img{
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./header-background.jpg) center center no-repeat;
     background-size: cover;
     text-align: center;
-    height: 250vh;
+    height: 170vh;
 }
   .container {
     width: 100%;
@@ -80,18 +80,23 @@ img{
     .container {
       max-width: 720px;
     }
-
+    #results-container> div p {
+      width: 100%;
+      text-align: center;
+    }
   }
   
   @media (min-width: 992px) {
     .container {
       max-width: 960px;
     }
+
   }
   @media (max-width:768px){
     .header{
-      height:420vh;
+      height:300vh;
     }
+    
   }
   @media (min-width: 1200px) {
     .container {
@@ -177,7 +182,7 @@ h1 {
   margin-top: 50px;
   justify-content: center;
   position: relative;
-  top: inherit;
+  top: 5%;
   left: inherit;
   /* top: 10% ;
   left: 28%; */
@@ -261,6 +266,7 @@ h1 {
   flex-direction:row;
   gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
 }
 .pre{
   position: relative;
@@ -271,10 +277,10 @@ h1 {
 }
 #guide{
   position: relative;
-  top: 100%;
+  top: 30%;
 }
 #question{
-  height: 70px;
+  height: 80px;
   overflow: none;
 }
 .result-item{
@@ -282,23 +288,44 @@ h1 {
   background-color: transparent;
 }
 #results-container > div img {
-  max-width: 100%;
+  width: 100%;
   
 }
 
 #results-container > div h3 {
   margin-top: 1rem;
   font-size: 1.5rem;
+  color: #fff;
 }
 
-#results-container> div p {
+#results-container > div p {
   margin-top: 0.5rem;
   font-size: 1.2rem;
-  text-align:justify;
+  text-align: justify;
+  width: 500px;
 }
-#results-container > div{
-  
+
+#results-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  top: 100%;
 }
+
+@media (max-width: 768px) {
+  #results-container > div p {
+    width: 95vw;
+   
+  }
+  #results-container > div {
+    top: auto;
+  }
+}
+
+
+
 @media (min-width: 992px){
 .navbar-custom {
     padding: 2.125rem 1.5rem 2.125rem 2rem;
