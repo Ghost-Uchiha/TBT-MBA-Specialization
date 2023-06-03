@@ -26,7 +26,7 @@
     color: #212529;
     text-align: left;
     background-color: #fff;
-    overflow-x: hidden;
+
   }
 
 .col-lg-12{
@@ -54,7 +54,7 @@ img{
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./header-background.jpg) center center no-repeat;
     background-size: cover;
     text-align: center;
-    height: 170vh;
+    height: 80vh;
 }
   .container {
     width: 100%;
@@ -62,6 +62,8 @@ img{
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    position: relative;
+    top: -80px;
   }
   
   @media (min-width: 576px) {
@@ -79,10 +81,6 @@ img{
   @media (min-width: 768px) {
     .container {
       max-width: 720px;
-    }
-    #results-container> div p {
-      width: 100%;
-      text-align: center;
     }
   }
   
@@ -255,10 +253,6 @@ h1 {
   font-size: 1.3rem;
   text-align: justify;
 }
-#req:hover{
-  cursor: crosshair;
-  transform: scale(1.1);
-}
 #results-container {
   display: flex;
   justify-content: center;
@@ -268,6 +262,19 @@ h1 {
   margin-top: 1rem;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  #results-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  #results-container .result-item {
+    width: 45%;
+  }
+}
+
 .pre{
   position: relative;
   top: 10px;
@@ -277,7 +284,7 @@ h1 {
 }
 #guide{
   position: relative;
-  top: 30%;
+  top: 10%;
 }
 #question{
   height: 80px;
@@ -302,7 +309,6 @@ h1 {
   margin-top: 0.5rem;
   font-size: 1.2rem;
   text-align: justify;
-  width: 500px;
 }
 
 #results-container > div {
@@ -589,21 +595,16 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
-button, [type="button"], [type="reset"], [type="submit"] {
-  -webkit-appearance: button;
+.error {
+  border-color: red;
 }
-button, select {
-  text-transform: none;
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
 }
-button, input {
-  overflow: visible;
-}
-input, button, select, optgroup, textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-button {
-  border-radius: 0;
+@media (max-width:576px){
+  .header{
+    height:140vh
+  }
 }
