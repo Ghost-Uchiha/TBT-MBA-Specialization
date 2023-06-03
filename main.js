@@ -201,16 +201,14 @@ function showDropdownemail() {
 }
 
 function addPhoneNumber(number) {
-  let phoneNumbers = getPhoneNumbers();
-
-  // Check if the number already exists
-  if (phoneNumbers.includes(number)) {
-    return; // Don't add the number again
-  }
-
-  phoneNumbers.push(number);
+  let phoneNumbers = [number]; // Create a new array with the new number
 
   const selectPhone = document.getElementById("previousPhoneNumbers");
+
+  // Remove all existing options
+  selectPhone.innerHTML = "";
+
+  // Add the new option
   const option = document.createElement("option");
   option.text = number;
   selectPhone.add(option);
@@ -220,16 +218,14 @@ function addPhoneNumber(number) {
 }
 
 function addEmail(email) {
-  let emails = getEmails();
-
-  // Check if the email already exists
-  if (emails.includes(email)) {
-    return; // Don't add the email again
-  }
-
-  emails.push(email);
+  let emails = [email]; // Create a new array with the new email
 
   const selectEmail = document.getElementById("previousEmails");
+
+  // Remove all existing options
+  selectEmail.innerHTML = "";
+
+  // Add the new option
   const option = document.createElement("option");
   option.text = email;
   selectEmail.add(option);
