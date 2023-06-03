@@ -87,7 +87,9 @@ for (var i = 0; i < buttons.length; i++) {
 		document.getElementById('guide').classList.add('hidden')
         document.getElementById('req').style.border = "1px solid #000";
         document.getElementById('req').style.borderRadius = "10px";
-		
+        // Scroll to the top of the page
+      window.scrollTo(0, 0);
+
     }
 
     currentQuestion = questions[currentQuestionIndex];
@@ -143,172 +145,181 @@ function restrictPhoneNumberInput(event) {
   removeErrorMessage(input);
 
   // Check if the entered number is not empty and is exactly 10 digits
-  if (phoneNumber.trim() !== '') {
+  if (phoneNumber.trim() !== "") {
     if (phoneNumber.length > 9) {
       input.value = phoneNumber.slice(0, 9); // Trim the input to 10 digits
     } else if (phoneNumber.length < 9) {
-      displayErrorMessage(input, 'Please enter a 10-digit phone number');
+      displayErrorMessage(input, "Please enter a 10-digit phone number.");
     }
   } else {
     removeErrorMessage(input);
   }
 }
 
-
-
 function displayErrorMessage(input, message) {
-  const errorSpan = document.createElement('span');
-  errorSpan.classList.add('error-message');
+  const errorSpan = document.createElement("span");
+  errorSpan.classList.add("error-message");
   errorSpan.textContent = message;
 
-  input.classList.add('error');
+  input.classList.add("error");
   input.parentNode.appendChild(errorSpan);
 }
 
 function removeErrorMessage(input) {
-  const errorSpan = input.parentNode.querySelector('.error-message');
+  const errorSpan = input.parentNode.querySelector(".error-message");
   if (errorSpan) {
     errorSpan.remove();
-    input.classList.remove('error');
+    input.classList.remove("error");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("ph").addEventListener("focus", showDropdownph);
+  document.getElementById("ph").addEventListener("blur", showDropdownph);
+  document.getElementById("gmail").addEventListener("focus", showDropdownemail);
+  document.getElementById("gmail").addEventListener("blur", showDropdownemail);
+});
+
+function showDropdownph() {
+  const input = document.getElementById("ph");
+  const dropdown = document.getElementById("previousPhoneNumbers");
+  if (input.value.trim() !== "") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+function showDropdownemail() {
+  const input = document.getElementById("gmail");
+  const dropdown = document.getElementById("previousEmails");
+  if (input.value.trim() !== "") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+function addPhoneNumber(number) {
+  let phoneNumbers = getPhoneNumbers();
+
+  // Check if the number already exists
+  if (phoneNumbers.includes(number)) {
+    return; // Don't add the number again
+  }
+
+  phoneNumbers.push(number);
+
+  const selectPhone = document.getElementById("previousPhoneNumbers");
+  const option = document.createElement("option");
+  option.text = number;
+  selectPhone.add(option);
+
+  // Store the phone numbers in localStorage
+  localStorage.setItem("phoneNumbers", JSON.stringify(phoneNumbers));
+}
+
+function addEmail(email) {
+  let emails = getEmails();
+
+  // Check if the email already exists
+  if (emails.includes(email)) {
+    return; // Don't add the email again
+  }
+
+  emails.push(email);
+
+  const selectEmail = document.getElementById("previousEmails");
+  const option = document.createElement("option");
+  option.text = email;
+  selectEmail.add(option);
+
+  // Store the emails in localStorage
+  localStorage.setItem("emails", JSON.stringify(emails));
+}
+
+function loadPreviousValues() {
+  const phoneNumbers = getPhoneNumbers();
+  const emails = getEmails();
+
+  const selectPhone = document.getElementById("previousPhoneNumbers");
+  const selectEmail = document.getElementById("previousEmails");
+
+  // Clear previous options
+  selectPhone.innerHTML = "";
+  selectEmail.innerHTML = "";
+
+  phoneNumbers.forEach((number) => {
+    const option = document.createElement("option");
+    option.text = number;
+    selectPhone.add(option);
+  });
+
+  emails.forEach((email) => {
+    const option = document.createElement("option");
+    option.text = email;
+    selectEmail.add(option);
+  });
+
+  // Automatically load single value if available
+  if (phoneNumbers.length === 1) {
+    document.getElementById("ph").value = phoneNumbers[0];
+  }
+
+  if (emails.length === 1) {
+    document.getElementById("gmail").value = emails[0];
   }
 }
 
 
-
-document.addEventListener("DOMContentLoaded", function(){
-	document.getElementById("ph").addEventListener("focus", showDropdownph);
-document.getElementById("ph").addEventListener("blur", showDropdownph);
-
-})
-	function showDropdownph() {
-		const input = document.getElementById("ph");
-    const dropdown = document.getElementById("previousPhoneNumbers");
-	if (input.value.trim() !== "") {
-		dropdown.style.display = "block";
-	} else {
-		dropdown.style.display = "none";
-	}
-}
-document.addEventListener("DOMContentLoaded", function(){
-	document.getElementById("gmail").addEventListener("focus", showDropdownemail);
-document.getElementById("gmail").addEventListener("blur", showDropdownemail);
-
-})
-	function showDropdownemail() {
-		const input = document.getElementById("gmail");
-    const dropdown = document.getElementById("previousEmails");
-		if (input.value.trim() !== "") {
-			dropdown.style.display = "block";
-		} else {
-			dropdown.style.display = "none";
-		}
-	
-		
-}
-function addPhoneNumber(number) {
-    let phoneNumbers = getPhoneNumbers();
-
-    // Check if the number already exists
-    if (phoneNumbers.includes(number)) {
-        return; // Don't add the number again
-    }
-
-    phoneNumbers.push(number);
-
-    const selectPhone = document.getElementById("previousPhoneNumbers");
-    const option = document.createElement("option");
-    option.text = number;
-    selectPhone.add(option);
-
-    // Store the phone numbers in localStorage
-    localStorage.setItem("phoneNumbers", JSON.stringify(phoneNumbers));
-}
-
-function addEmail(email) {
-    let emails = getEmails();
-
-    // Check if the email already exists
-    if (emails.includes(email)) {
-        return; // Don't add the email again
-    }
-
-    emails.push(email);
-
-    const selectEmail = document.getElementById("previousEmails");
-    const option = document.createElement("option");
-    option.text = email;
-    selectEmail.add(option);
-
-    // Store the emails in localStorage
-    localStorage.setItem("emails", JSON.stringify(emails));
-}
-
-
-function loadPreviousValues() {
-    const phoneNumbers = getPhoneNumbers();
-    const emails = getEmails();
-
-    const selectPhone = document.getElementById("previousPhoneNumbers");
-    const selectEmail = document.getElementById("previousEmails");
-
-    // Clear previous options
-    selectPhone.innerHTML = "";
-    selectEmail.innerHTML = "";
-
-    phoneNumbers.forEach((number) => {
-        const option = document.createElement("option");
-        option.text = number;
-        selectPhone.add(option);
-    });
-
-    emails.forEach((email) => {
-        const option = document.createElement("option");
-        option.text = email;
-        selectEmail.add(option);
-    });
-}
-
-
 function getPhoneNumbers() {
-    const phoneNumbers = localStorage.getItem("phoneNumbers");
-    return phoneNumbers ? JSON.parse(phoneNumbers) : [];
+  const phoneNumbers = localStorage.getItem("phoneNumbers");
+  return phoneNumbers ? JSON.parse(phoneNumbers) : [];
 }
 
 function getEmails() {
-    const emails = localStorage.getItem("emails");
-    return emails ? JSON.parse(emails) : [];
+  const emails = localStorage.getItem("emails");
+  return emails ? JSON.parse(emails) : [];
 }
 
 function isValidEmail(email) {
-    // Add your email validation logic here
-    // This is a basic email validation using regular expression
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
+  // Add your email validation logic here
+  // This is a basic email validation using regular expression
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
 }
 
+// Function to fill phone number field
 function fillPhoneNumber() {
-    const selectPhone = document.getElementById("previousPhoneNumbers");
-    const phoneNumberInput = document.getElementById("ph");
-    const selectedPhoneNumber = selectPhone.options[selectPhone.selectedIndex].text;
-    phoneNumberInput.value = selectedPhoneNumber;
+  var selectedPhoneNumber = document.getElementById("previousPhoneNumbers").value;
+  if (selectedPhoneNumber !== "") {
+    document.getElementById("ph").value = selectedPhoneNumber;
+  } else {
+    document.getElementById("ph").value = ""; // Clear the phone number field
+  }
 }
 
+// Function to fill email field
 function fillEmail() {
-    const selectEmail = document.getElementById("previousEmails");
-    const emailInput = document.getElementById("gmail");
-    const selectedEmail = selectEmail.options[selectEmail.selectedIndex].text;
-    emailInput.value = selectedEmail;
+  var selectedEmail = document.getElementById("previousEmails").value;
+  if (selectedEmail !== "") {
+    document.getElementById("gmail").value = selectedEmail;
+  } else {
+    document.getElementById("gmail").value = ""; // Clear the email field
+  }
 }
+
 
 // Call the function to load previous values when the page loads
 window.addEventListener("load", loadPreviousValues);
 
 // Add event listeners to the dropdown menus
 document.addEventListener("DOMContentLoaded", function() {
-	document.getElementById("previousPhoneNumbers").addEventListener("change", fillPhoneNumber);
-	document.getElementById("previousEmails").addEventListener("change", fillEmail);
-  });
- 
+  document.getElementById("previousPhoneNumbers").addEventListener("change", fillPhoneNumber);
+  document.getElementById("previousEmails").addEventListener("change", fillEmail);
+});
+
+  
   
 
   function displayResults() {
@@ -321,7 +332,9 @@ document.addEventListener("DOMContentLoaded", function() {
       maxScore = counts[letter];
       }
     }
-    
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+
     // Find letters with the maximum score
     for (const letter in counts) {
       if (counts[letter] === maxScore) {
@@ -372,11 +385,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("container").style.height = "560px";
     document.getElementById('guide').classList.remove('hidden')
     document.getElementById('col-lg-12').style.height="500px"
-    
+    document.getElementById('header').style.height="130vh"
+    const ismobile = window.matchMedia("(max-width: 767px)").matches;
+    if (ismobile){
+      document.getElementById('header').style.height = "300vh";
+
+    }
     const resultsCount = maxScores.length;
     const isMobileView = window.matchMedia("(max-width: 767px)").matches;
   
-    if (resultsCount >= 2 && isMobileView) {
+    if (resultsCount > 3 && isMobileView) {
       // Modify styles and hide/show elements
       document.getElementById("header").style.height = "520vh";
      
@@ -395,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
       window.open("description-page.html?category=" + encodeURIComponent(categoryName), "_blank");
     }
     
-    
+    loadPreviousValues();
 
 
 // function displayResults() {

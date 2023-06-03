@@ -296,7 +296,7 @@ h1 {
 }
 #results-container > div img {
   width: 100%;
-  
+  height: auto;
 }
 
 #results-container > div h3 {
@@ -327,6 +327,9 @@ h1 {
   }
   #results-container > div {
     top: auto;
+  }
+  .result-item{
+    width: 5000px;
   }
 }
 
