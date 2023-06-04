@@ -316,98 +316,188 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
   
-  
+function displayResults() {
+  const maxScores = [];
+  let maxScore = 0;
 
-  function displayResults() {
-    const maxScores = [];
-    let maxScore = 0;
-    
-    // Find the maximum score
-    for (const letter in counts) {
-      if (counts[letter] > maxScore) {
+  // Find the maximum score
+  for (const letter in counts) {
+    if (counts[letter] > maxScore) {
       maxScore = counts[letter];
-      }
     }
-    // Scroll to the top of the page
-    window.scrollTo(0, 0);
+  }
+  // Scroll to the top of the page
+  window.scrollTo(0, 0);
 
-    // Find letters with the maximum score
-    for (const letter in counts) {
-      if (counts[letter] === maxScore) {
+  // Find letters with the maximum score
+  for (const letter in counts) {
+    if (counts[letter] === maxScore) {
       maxScores.push(letter);
-      }
     }
-    
-    const resultsContainer = document.getElementById('results-container');
-    
-    if (maxScores.length > 0) {
-      // Display results for each letter with the maximum score
-      maxScores.forEach((letter) => {
+  }
+
+  const resultsContainer = document.getElementById('results-container');
+
+  if (maxScores.length > 0) {
+    // Display results for each letter with the maximum score
+    maxScores.forEach((letter) => {
       const category = categories.find((cat) => cat.name === letter);
-    
+
       if (category) {
         const resultElement = document.createElement("div");
         resultElement.className = "result-item";
         resultElement.innerHTML = `
-        <img src="${category.image}" alt="${category.description}" >
+          <img src="${category.image}" alt="${category.description}">
+          <p class="description">${truncateDescription(category.description)}</p>
+          <button class="read-more" onclick="showDescription('${category.name}')">Read More</button>
         `;
-        const descriptionButton = document.createElement("button");
-        descriptionButton.className = "result-button"
-        descriptionButton.style.backgroundColor = "transparent";
-          descriptionButton.style.borderRadius = "10px";
-          descriptionButton.style.textAlign = "center";
-          descriptionButton.style.width = "200px";
-          descriptionButton.style.margin = "20px auto 10px";
-      descriptionButton.style.color = "#fff"
-          descriptionButton.textContent = "Show Description";
-          descriptionButton.addEventListener("click", () => {
-            showDescription(category.name);
-          });
-      resultElement.appendChild(descriptionButton);
         resultsContainer.appendChild(resultElement);
       }
-      });
-    } else {
-      const resultElement = document.createElement("div");
-      resultElement.className = "result-item";
-      resultElement.textContent = "No valid letters entered.";
-      resultsContainer.appendChild(resultElement);
-    }
-    
-    // Modify styles and hide/show elements if needed
-    document.getElementById("heading").innerHTML = "";
-    document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
-    document.getElementById("hid").classList.add("hidden");
-    document.getElementById("container").style.height = "560px";
-    document.getElementById('guide').classList.remove('hidden')
-    document.getElementById('col-lg-12').style.height="500px"
-    document.getElementById('header').style.height="130vh"
-    const ismobile = window.matchMedia("(max-width: 767px)").matches;
-    if (ismobile){
-      document.getElementById('header').style.height = "300vh";
-
-    }
-    const resultsCount = maxScores.length;
-    const isMobileView = window.matchMedia("(max-width: 767px)").matches;
-  
-    if (resultsCount > 3 && isMobileView) {
-      // Modify styles and hide/show elements
-      document.getElementById("header").style.height = "520vh";
-     
-    }
-    const resultDivs = document.querySelectorAll("#results-container > div");
-    resultDivs.forEach((div) => {
-      div.style.backgroundColor = "transparent";
-      div.style.borderRadius = "10px";
-      div.style.textAlign = "center";
-      div.style.width = "300px";
     });
-    }
+  } else {
+    const resultElement = document.createElement("div");
+    resultElement.className = "result-item";
+    resultElement.textContent = "No valid letters entered.";
+    resultsContainer.appendChild(resultElement);
+  }
+  const hrElement = document.createElement("hr");
+  hrElement.classList.add("hr-class");
+  resultsContainer.insertAdjacentElement("afterend", hrElement);
+  // Modify styles and hide/show elements if needed
+  document.getElementById("heading").innerHTML = "";
+  document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
+  document.getElementById("hid").classList.add("hidden");
+  document.getElementById("container").style.height = "560px";
+  document.getElementById('guide').classList.remove('hidden')
+  document.getElementById('col-lg-12').style.height="500px"
+  document.getElementById('results-container').style.margin = "-50px 0 0 0"
+  document.getElementById('header').style.height="130vh"
+  const ismobile = window.matchMedia("(max-width: 767px)").matches;
+  if (ismobile) {
+    document.getElementById('header').style.height = "300vh";
+  }
+  const resultsCount = maxScores.length;
+  const isMobileView = window.matchMedia("(max-width: 767px)").matches;
+
+  if (resultsCount > 3 && isMobileView) {
+    // Modify styles and hide/show elements
+    document.getElementById("header").style.height = "410vh";
+  }
+
+  const resultDivs = document.querySelectorAll("#results-container > div");
+  resultDivs.forEach((div) => {
+    div.style.backgroundColor = "transparent";
+    div.style.borderRadius = "10px";
+    div.style.textAlign = "center";
+    div.style.width = "300px";
+  });
+}
+
+function truncateDescription(description) {
+  const maxLength = 100; // Maximum number of characters to display
+  if (description.length <= maxLength) {
+    return description; // Return the description as is if it's shorter than the maximum length
+  }
+  return description.substring(0, maxLength) + "..."; // Truncate the description and add ellipsis
+}
+
+function showDescription(categoryName) {
+  // Redirect to another page with the category name as a parameter
+  window.open("description-page.html?category=" + encodeURIComponent(categoryName), "_blank");
+}
+  
+
+
+  // function displayResults() {
+  //   const maxScores = [];
+  //   let maxScore = 0;
     
-    function showDescription(categoryName) {
-      // Redirect to another page with the category name as a parameter
-      window.open("description-page.html?category=" + encodeURIComponent(categoryName), "_blank");
-    }
+  //   // Find the maximum score
+  //   for (const letter in counts) {
+  //     if (counts[letter] > maxScore) {
+  //     maxScore = counts[letter];
+  //     }
+  //   }
+  //   // Scroll to the top of the page
+  //   window.scrollTo(0, 0);
+
+  //   // Find letters with the maximum score
+  //   for (const letter in counts) {
+  //     if (counts[letter] === maxScore) {
+  //     maxScores.push(letter);
+  //     }
+  //   }
+    
+  //   const resultsContainer = document.getElementById('results-container');
+    
+  //   if (maxScores.length > 0) {
+  //     // Display results for each letter with the maximum score
+  //     maxScores.forEach((letter) => {
+  //     const category = categories.find((cat) => cat.name === letter);
+    
+  //     if (category) {
+  //       const resultElement = document.createElement("div");
+  //       resultElement.className = "result-item";
+  //       resultElement.innerHTML = `
+  //       <img src="${category.image}" alt="${category.description}" >
+  //       `;
+  //       const descriptionButton = document.createElement("button");
+  //       descriptionButton.className = "result-button"
+  //       descriptionButton.style.backgroundColor = "transparent";
+  //         descriptionButton.style.borderRadius = "10px";
+  //         descriptionButton.style.textAlign = "center";
+  //         descriptionButton.style.width = "200px";
+  //         descriptionButton.style.margin = "20px auto 10px";
+  //     descriptionButton.style.color = "#fff"
+  //         descriptionButton.textContent = "Show Description";
+  //         descriptionButton.addEventListener("click", () => {
+  //           showDescription(category.name);
+  //         });
+  //     resultElement.appendChild(descriptionButton);
+  //       resultsContainer.appendChild(resultElement);
+  //     }
+  //     });
+  //   } else {
+  //     const resultElement = document.createElement("div");
+  //     resultElement.className = "result-item";
+  //     resultElement.textContent = "No valid letters entered.";
+  //     resultsContainer.appendChild(resultElement);
+  //   }
+    
+  //   // Modify styles and hide/show elements if needed
+  //   document.getElementById("heading").innerHTML = "";
+  //   document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
+  //   document.getElementById("hid").classList.add("hidden");
+  //   document.getElementById("container").style.height = "560px";
+  //   document.getElementById('guide').classList.remove('hidden')
+  //   document.getElementById('col-lg-12').style.height="500px"
+  //   document.getElementById('header').style.height="130vh"
+  //   const ismobile = window.matchMedia("(max-width: 767px)").matches;
+  //   if (ismobile){
+  //     document.getElementById('header').style.height = "300vh";
+
+  //   }
+  //   const resultsCount = maxScores.length;
+  //   const isMobileView = window.matchMedia("(max-width: 767px)").matches;
+  
+  //   if (resultsCount > 3 && isMobileView) {
+  //     // Modify styles and hide/show elements
+  //     document.getElementById("header").style.height = "350vh";
+     
+  //   }
+  //   const resultDivs = document.querySelectorAll("#results-container > div");
+  //   resultDivs.forEach((div) => {
+  //     div.style.backgroundColor = "transparent";
+  //     div.style.borderRadius = "10px";
+  //     div.style.textAlign = "center";
+  //     div.style.width = "300px";
+  //   });
+  //   }
+    
+  //   function showDescription(categoryName) {
+  //     // Redirect to another page with the category name as a parameter
+  //     window.open("description-page.html?category=" + encodeURIComponent(categoryName), "_blank");
+  //   }
     
     loadPreviousValues();
 
