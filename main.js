@@ -25,9 +25,9 @@ const questions = [
   
   const categories = [
 	{ name: "Marketing", description: "A Marketing MBA is a specialized graduate degree that focuses on developing expertise in marketing strategy, consumer behaviour, market research, and brand management. This program combines core business principles with specialized marketing courses to equip individuals with the knowledge and skills necessary to navigate the dynamic world of marketing. A Marketing MBA curriculum typically covers areas such as marketing analytics, digital marketing, product development, and marketing communications. Graduates of a Marketing MBA program often pursue careers in advertising, brand management, market research, or marketing consulting. This degree prepares professionals to create effective marketing strategies, build strong brands, and drive business growth in today's competitive marketplaces.", image: "image/Marketing.jpg" },
-	{ name: "Finance", description: "A Finance MBA is a specialized graduate degree that equips individuals with the knowledge and skills needed to excel in the field of finance. It combines the principles of business administration with a deep understanding of financial analysis, investment management, and risk assessment. A Finance MBA program typically covers a wide range of topics such as	financial planning, corporate finance, derivatives, and portfolio management. Graduates of a Finance MBA program often pursue careers in investment banking, corporate finance,financial consulting, or asset management. This degree provides a solid foundation for professionals seeking to make strategic financial decisions and drive organizational success in today&#39;s complex financial landscape.", image: "image/Finance.jpg" },
-	{ name: "Operations", description: "An Operations MBA is a specialized graduate degree that focuses on the management and optimization of business operations. This program combines core business principles with specialized coursework in operations management, supply chain management, logistics,process improvement, and project management. An Operations MBA equips individuals with the knowledge and skills necessary to streamline processes, increase efficiency, and maximize productivity within organizations. Graduates of an Operations MBA program often pursue careers as operations managers, supply chain analysts, project managers, or consultants. This degree prepares professionals to effectively manage resources, drive operational excellence, and contribute to the overall success of organizations in today&#39;s fast-paced and competitive business environment.", image: "image/operations.jpg" },
-	{ name: "IT", description: "An IT MBA, or Information Technology MBA, is a specialized graduate degree that focuses on the intersection of business and technology. This program combines core business administration principles with specialized coursework in areas such as IT strategy, data analytics, cybersecurity, project management, and digital transformation. An IT MBA equips individuals with the knowledge and skills needed to lead and manage IT initiatives within organizations. Graduates of an IT MBA program often pursue careers as IT managers, technology consultants, data analysts, or business analysts. This degree prepares professionals to bridge the gap between technology and business objectives, leverage emerging technologies, and drive innovation and digital strategies in today&#39;s technology-driven business landscape.", image: "image/IT.jpg" },
+	{ name: "Finance", description: "A Finance MBA is a specialized graduate degree that equips individuals with the knowledge and skills needed to excel in the field of finance. It combines the principles of business administration with a deep understanding of financial analysis, investment management, and risk assessment. A Finance MBA program typically covers a wide range of topics such as	financial planning, corporate finance, derivatives, and portfolio management. Graduates of a Finance MBA program often pursue careers in investment banking, corporate finance,financial consulting, or asset management. This degree provides a solid foundation for professionals seeking to make strategic financial decisions and drive organizational success in today's complex financial landscape.", image: "image/Finance.jpg" },
+	{ name: "Operations", description: "An Operations MBA is a specialized graduate degree that focuses on the management and optimization of business operations. This program combines core business principles with specialized coursework in operations management, supply chain management, logistics,process improvement, and project management. An Operations MBA equips individuals with the knowledge and skills necessary to streamline processes, increase efficiency, and maximize productivity within organizations. Graduates of an Operations MBA program often pursue careers as operations managers, supply chain analysts, project managers, or consultants. This degree prepares professionals to effectively manage resources, drive operational excellence, and contribute to the overall success of organizations in today's fast-paced and competitive business environment.", image: "image/operations.jpg" },
+	{ name: "IT", description: "An IT MBA, or Information Technology MBA, is a specialized graduate degree that focuses on the intersection of business and technology. This program combines core business administration principles with specialized coursework in areas such as IT strategy, data analytics, cybersecurity, project management, and digital transformation. An IT MBA equips individuals with the knowledge and skills needed to lead and manage IT initiatives within organizations. Graduates of an IT MBA program often pursue careers as IT managers, technology consultants, data analysts, or business analysts. This degree prepares professionals to bridge the gap between technology and business objectives, leverage emerging technologies, and drive innovation and digital strategies in today's technology-driven business landscape.", image: "image/IT.jpg" },
 	{ name: "HR", description: "An HR MBA, or Human Resources MBA, is a specialized graduate degree designed to develop professionals with advanced knowledge and skills in human resource management. This program focuses on the strategic aspects of HR, including talent acquisition, employee development, performance management, compensation and benefits, and organizational behaviour. HR MBAs blend business administration principles with specialized HR courses to equip individuals with the expertise necessary to navigate the complexities of managing human capital in organizations. Graduates of an HR MBA program often pursue careers as HR managers, talent acquisition specialists, training and development managers, or HR consultants. This degree prepares professionals to effectively lead and support the people management function within organizations and drive employee engagement and organizational success.", image: "image/HR.jpg" },
 
 ];
@@ -408,162 +408,12 @@ function showDescription(categoryName) {
   
 
 
-  // function displayResults() {
-  //   const maxScores = [];
-  //   let maxScore = 0;
-    
-  //   // Find the maximum score
-  //   for (const letter in counts) {
-  //     if (counts[letter] > maxScore) {
-  //     maxScore = counts[letter];
-  //     }
-  //   }
-  //   // Scroll to the top of the page
-  //   window.scrollTo(0, 0);
-
-  //   // Find letters with the maximum score
-  //   for (const letter in counts) {
-  //     if (counts[letter] === maxScore) {
-  //     maxScores.push(letter);
-  //     }
-  //   }
-    
-  //   const resultsContainer = document.getElementById('results-container');
-    
-  //   if (maxScores.length > 0) {
-  //     // Display results for each letter with the maximum score
-  //     maxScores.forEach((letter) => {
-  //     const category = categories.find((cat) => cat.name === letter);
-    
-  //     if (category) {
-  //       const resultElement = document.createElement("div");
-  //       resultElement.className = "result-item";
-  //       resultElement.innerHTML = `
-  //       <img src="${category.image}" alt="${category.description}" >
-  //       `;
-  //       const descriptionButton = document.createElement("button");
-  //       descriptionButton.className = "result-button"
-  //       descriptionButton.style.backgroundColor = "transparent";
-  //         descriptionButton.style.borderRadius = "10px";
-  //         descriptionButton.style.textAlign = "center";
-  //         descriptionButton.style.width = "200px";
-  //         descriptionButton.style.margin = "20px auto 10px";
-  //     descriptionButton.style.color = "#fff"
-  //         descriptionButton.textContent = "Show Description";
-  //         descriptionButton.addEventListener("click", () => {
-  //           showDescription(category.name);
-  //         });
-  //     resultElement.appendChild(descriptionButton);
-  //       resultsContainer.appendChild(resultElement);
-  //     }
-  //     });
-  //   } else {
-  //     const resultElement = document.createElement("div");
-  //     resultElement.className = "result-item";
-  //     resultElement.textContent = "No valid letters entered.";
-  //     resultsContainer.appendChild(resultElement);
-  //   }
-    
-  //   // Modify styles and hide/show elements if needed
-  //   document.getElementById("heading").innerHTML = "";
-  //   document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
-  //   document.getElementById("hid").classList.add("hidden");
-  //   document.getElementById("container").style.height = "560px";
-  //   document.getElementById('guide').classList.remove('hidden')
-  //   document.getElementById('col-lg-12').style.height="500px"
-  //   document.getElementById('header').style.height="130vh"
-  //   const ismobile = window.matchMedia("(max-width: 767px)").matches;
-  //   if (ismobile){
-  //     document.getElementById('header').style.height = "300vh";
-
-  //   }
-  //   const resultsCount = maxScores.length;
-  //   const isMobileView = window.matchMedia("(max-width: 767px)").matches;
-  
-  //   if (resultsCount > 3 && isMobileView) {
-  //     // Modify styles and hide/show elements
-  //     document.getElementById("header").style.height = "350vh";
-     
-  //   }
-  //   const resultDivs = document.querySelectorAll("#results-container > div");
-  //   resultDivs.forEach((div) => {
-  //     div.style.backgroundColor = "transparent";
-  //     div.style.borderRadius = "10px";
-  //     div.style.textAlign = "center";
-  //     div.style.width = "300px";
-  //   });
-  //   }
-    
-  //   function showDescription(categoryName) {
-  //     // Redirect to another page with the category name as a parameter
-  //     window.open("description-page.html?category=" + encodeURIComponent(categoryName), "_blank");
-  //   }
+ 
     
     loadPreviousValues();
 
 
-// function displayResults() {
-// 	const maxScores = [];
-// 	let maxScore = 0;
-  
-// 	// Find the maximum score
-// 	for (const letter in counts) {
-// 	  if (counts[letter] > maxScore) {
-// 		maxScore = counts[letter];
-// 	  }
-// 	}
-  
-// 	// Find letters with the maximum score
-// 	for (const letter in counts) {
-// 	  if (counts[letter] === maxScore) {
-// 		maxScores.push(letter);
-// 	  }
-// 	}
-  
-// 	const resultsContainer = document.getElementById('results-container');
-  
-// 	if (maxScores.length > 0) {
-// 	  // Display results for each letter with the maximum score
-// 	  maxScores.forEach((letter) => {
-// 		const category = categories.find((cat) => cat.name === letter);
-  
-// 		if (category) {
-// 		  const resultElement = document.createElement("div");
-// 		  resultElement.className = "result-item";
-// 		  resultElement.innerHTML = `
-// 			<img src="${category.image}" alt="${category.description}">
-// 			<h3>${category.name}</h3>
-// 			<p>${category.description}</p>
-// 		  `;
-// 		  resultsContainer.appendChild(resultElement);
-// 		}
-// 	  });
-// 	} else {
-// 	  const resultElement = document.createElement("div");
-// 	  resultElement.className = "result-item";
-// 	  resultElement.textContent = "No valid letters entered.";
-// 	  resultsContainer.appendChild(resultElement);
-// 	}
-  
-// 	// Modify styles and hide/show elements if needed
-// 	document.getElementById("heading").innerHTML = "";
-// 	document.getElementById("main-header").innerHTML = "WHAT SUITS YOU...";
-// 	document.getElementById("hid").classList.add("hidden");
-//   document.getElementById('header').style.height= "170vh"
-// 	document.getElementById("container").style.height = "560px";
-// 	document.getElementById('guide').classList.remove('hidden')
-	  
- 
-// 	const resultDivs = document.querySelectorAll("#results-container > div");
-// 	resultDivs.forEach((div) => {
-// 	  div.style.backgroundColor = "transparent";
-// 	  div.style.borderRadius = "10px";
-	  
-// 	  div.style.textAlign = "center";
-// 	  div.style.width = "300px";
-// 	});
-//   }
-  
+
   
   
 
