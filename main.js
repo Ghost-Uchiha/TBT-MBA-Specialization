@@ -349,7 +349,7 @@ function displayResults() {
         resultElement.innerHTML = `
         <img src="${category.image}" alt="${category.description}" class="result-image">
           <p class="description">${truncateDescription(category.description)}</p>
-          <button class="read-more" onclick="showDescription('${category.name}')">Read More</button>
+          <button class="read-more" onclick="showDescription('${category.name}')">Read More >></button>
         `;
         resultsContainer.appendChild(resultElement);
       }
