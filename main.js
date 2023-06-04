@@ -173,32 +173,32 @@ function removeErrorMessage(input) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("ph").addEventListener("focus", showDropdownph);
-  document.getElementById("ph").addEventListener("blur", showDropdownph);
-  document.getElementById("gmail").addEventListener("focus", showDropdownemail);
-  document.getElementById("gmail").addEventListener("blur", showDropdownemail);
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//   document.getElementById("ph").addEventListener("focus", showDropdownph);
+//   document.getElementById("ph").addEventListener("blur", showDropdownph);
+//   document.getElementById("gmail").addEventListener("focus", showDropdownemail);
+//   document.getElementById("gmail").addEventListener("blur", showDropdownemail);
+// });
 
-function showDropdownph() {
-  const input = document.getElementById("ph");
-  const dropdown = document.getElementById("previousPhoneNumbers");
-  if (input.value.trim() !== "") {
-    dropdown.style.display = "block";
-  } else {
-    dropdown.style.display = "none";
-  }
-}
+// function showDropdownph() {
+//   const input = document.getElementById("ph");
+//   const dropdown = document.getElementById("previousPhoneNumbers");
+//   if (input.value.trim() !== "") {
+//     dropdown.style.display = "block";
+//   } else {
+//     dropdown.style.display = "none";
+//   }
+// }
 
-function showDropdownemail() {
-  const input = document.getElementById("gmail");
-  const dropdown = document.getElementById("previousEmails");
-  if (input.value.trim() !== "") {
-    dropdown.style.display = "block";
-  } else {
-    dropdown.style.display = "none";
-  }
-}
+// function showDropdownemail() {
+//   const input = document.getElementById("gmail");
+//   const dropdown = document.getElementById("previousEmails");
+//   if (input.value.trim() !== "") {
+//     dropdown.style.display = "block";
+//   } else {
+//     dropdown.style.display = "none";
+//   }
+// }
 
 function addPhoneNumber(number) {
   let phoneNumbers = [number]; // Create a new array with the new number
@@ -286,24 +286,24 @@ function isValidEmail(email) {
 }
 
 // Function to fill phone number field
-function fillPhoneNumber() {
-  var selectedPhoneNumber = document.getElementById("previousPhoneNumbers").value;
-  if (selectedPhoneNumber !== "") {
-    document.getElementById("ph").value = selectedPhoneNumber;
-  } else {
-    document.getElementById("ph").value = ""; // Clear the phone number field
-  }
-}
+// function fillPhoneNumber() {
+//   var selectedPhoneNumber = document.getElementById("previousPhoneNumbers").value;
+//   if (selectedPhoneNumber !== "") {
+//     document.getElementById("ph").value = selectedPhoneNumber;
+//   } else {
+//     document.getElementById("ph").value = ""; // Clear the phone number field
+//   }
+// }
 
-// Function to fill email field
-function fillEmail() {
-  var selectedEmail = document.getElementById("previousEmails").value;
-  if (selectedEmail !== "") {
-    document.getElementById("gmail").value = selectedEmail;
-  } else {
-    document.getElementById("gmail").value = ""; // Clear the email field
-  }
-}
+// // Function to fill email field
+// function fillEmail() {
+//   var selectedEmail = document.getElementById("previousEmails").value;
+//   if (selectedEmail !== "") {
+//     document.getElementById("gmail").value = selectedEmail;
+//   } else {
+//     document.getElementById("gmail").value = ""; // Clear the email field
+//   }
+// }
 
 
 // Call the function to load previous values when the page loads
