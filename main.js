@@ -347,7 +347,7 @@ function displayResults() {
         const resultElement = document.createElement("div");
         resultElement.className = "result-item";
         resultElement.innerHTML = `
-          <img src="${category.image}" alt="${category.description}">
+        <img src="${category.image}" alt="${category.description}" class="result-image">
           <p class="description">${truncateDescription(category.description)}</p>
           <button class="read-more" onclick="showDescription('${category.name}')">Read More</button>
         `;
