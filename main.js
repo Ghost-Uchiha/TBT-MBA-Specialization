@@ -372,11 +372,12 @@ function displayResults() {
   document.getElementById('guide').classList.remove('hidden')
   document.getElementById('col-lg-12').style.height="500px"
   document.getElementById('container').classList.remove('re')
-  document.getElementById('col-lg-12').style.margin = "-50px 0 0 0"
+  document.getElementById('col-lg-12').style.margin = "-100px 0 0 0"
   document.getElementById('header').style.height="150vh"
   const ismobile = window.matchMedia("(max-width: 767px)").matches;
   if (ismobile) {
     document.getElementById('header').style.height = "320vh";
+    document.getElementById('results-container').style.marginTop="-150px"
   }
   const resultsCount = maxScores.length;
   const isMobileView = window.matchMedia("(max-width: 767px)").matches;
@@ -384,6 +385,7 @@ function displayResults() {
   if (resultsCount > 3 && isMobileView) {
     // Modify styles and hide/show elements
     document.getElementById("header").style.height = "540vh";
+    document.getElementById('results-container').style.marginTop="-150px"
   }
 
   const resultDivs = document.querySelectorAll("#results-container > div");
