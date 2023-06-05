@@ -69,6 +69,7 @@ const questions = [
         number.textContent = "";
         document.getElementById('main-header').innerHTML = "ENTER YOUR EMAIL AND PHONE NUMBER TO SEE THE RESULT  ";
         document.getElementById('detail').innerHTML = "";
+        document.getElementById('container').classList.remove('re')
 		document.getElementById('body').style.removeProperty('overflow')
         // Get all elements with the class name 'hide-button'
 var buttons = document.getElementsByClassName('bt');
@@ -286,24 +287,24 @@ function isValidEmail(email) {
 }
 
 // Function to fill phone number field
-// function fillPhoneNumber() {
-//   var selectedPhoneNumber = document.getElementById("previousPhoneNumbers").value;
-//   if (selectedPhoneNumber !== "") {
-//     document.getElementById("ph").value = selectedPhoneNumber;
-//   } else {
-//     document.getElementById("ph").value = ""; // Clear the phone number field
-//   }
-// }
+function fillPhoneNumber() {
+  var selectedPhoneNumber = document.getElementById("previousPhoneNumbers").value;
+  if (selectedPhoneNumber !== "") {
+    document.getElementById("ph").value = selectedPhoneNumber;
+  } else {
+    document.getElementById("ph").value = ""; // Clear the phone number field
+  }
+}
 
-// // Function to fill email field
-// function fillEmail() {
-//   var selectedEmail = document.getElementById("previousEmails").value;
-//   if (selectedEmail !== "") {
-//     document.getElementById("gmail").value = selectedEmail;
-//   } else {
-//     document.getElementById("gmail").value = ""; // Clear the email field
-//   }
-// }
+// Function to fill email field
+function fillEmail() {
+  var selectedEmail = document.getElementById("previousEmails").value;
+  if (selectedEmail !== "") {
+    document.getElementById("gmail").value = selectedEmail;
+  } else {
+    document.getElementById("gmail").value = ""; // Clear the email field
+  }
+}
 
 
 // Call the function to load previous values when the page loads
@@ -370,18 +371,19 @@ function displayResults() {
   document.getElementById("container").style.height = "560px";
   document.getElementById('guide').classList.remove('hidden')
   document.getElementById('col-lg-12').style.height="500px"
-  document.getElementById('results-container').style.margin = "-50px 0 0 0"
-  document.getElementById('header').style.height="130vh"
+  document.getElementById('container').classList.remove('re')
+  document.getElementById('col-lg-12').style.margin = "-50px 0 0 0"
+  document.getElementById('header').style.height="150vh"
   const ismobile = window.matchMedia("(max-width: 767px)").matches;
   if (ismobile) {
-    document.getElementById('header').style.height = "300vh";
+    document.getElementById('header').style.height = "320vh";
   }
   const resultsCount = maxScores.length;
   const isMobileView = window.matchMedia("(max-width: 767px)").matches;
 
   if (resultsCount > 3 && isMobileView) {
     // Modify styles and hide/show elements
-    document.getElementById("header").style.height = "410vh";
+    document.getElementById("header").style.height = "540vh";
   }
 
   const resultDivs = document.querySelectorAll("#results-container > div");

@@ -35,6 +35,7 @@
         width: 100%;
         padding-right: 15px;
         padding-left: 15px;
+        text-align: center;
     }
 .hidden{
   display: none;
@@ -54,7 +55,7 @@ img{
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./header-background.jpg) center center no-repeat;
     background-size: cover;
     text-align: center;
-    height: 100vh;
+    height: 150vh;
 }
   .container {
     width: 100%;
@@ -63,7 +64,12 @@ img{
     margin-right: auto;
     margin-left: auto;
     position: relative;
-    top: -80px;
+  }
+  .re{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
   
   @media (min-width: 576px) {
@@ -89,12 +95,6 @@ img{
       max-width: 960px;
     }
 
-  }
-  @media (max-width:768px){
-    .header{
-      height:300vh;
-    }
-    
   }
   @media (min-width: 1200px) {
     .container {
@@ -149,7 +149,9 @@ h1 {
     margin-left: 0;
 }
 }
-
+#main-header,#detail{
+  padding-top: 2.2rem;
+}
 .header .btn-solid-lg {
     margin-right: 0.5rem;
     margin-bottom: 1.125rem;
@@ -316,6 +318,7 @@ h1 {
 .result-item{
   height: 350px;
   background-color: transparent;
+ 
 }
 .result-image {
   width: 290px;
@@ -329,13 +332,13 @@ h1 {
 
 #results-container > div h3 {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #fff;
 }
 
 #results-container > div p {
   margin-top: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-align: justify;
 }
 
@@ -358,12 +361,13 @@ h1 {
   }
   .result-item{
     width: 100%;
+    margin-top: 9.2rem;
   }
 }
 
 .hr-class{
   background-color: #fff;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 @media (min-width: 992px){
@@ -639,6 +643,6 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 }
 @media (max-width:576px){
   .header{
-    height:140vh
+    height:160vh
   }
 }
