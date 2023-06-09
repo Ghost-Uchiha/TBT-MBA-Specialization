@@ -68,6 +68,13 @@ const questions = [
         document.getElementById('question').innerHTML = "";
         number.textContent = "";
         document.getElementById('main-header').innerHTML = "ENTER YOUR EMAIL AND PHONE NUMBER TO SEE THE RESULT  ";
+        document.getElementById('main-header').style.position="relative"
+        document.getElementById('main-header').style.top="-100px"
+        const ismobile = window.matchMedia("(max-width: 767px)").matches;
+        if(ismobile){
+          document.getElementById('main-header').style.top="-150px"
+          document.getElementById('req').style.top="-280px"
+        }
         document.getElementById('detail').innerHTML = "";
         document.getElementById('container').classList.remove('re')
 		document.getElementById('body').style.removeProperty('overflow')
@@ -374,10 +381,12 @@ function displayResults() {
   document.getElementById('container').classList.remove('re')
   document.getElementById('col-lg-12').style.margin = "-100px 0 0 0"
   document.getElementById('header').style.height="150vh"
+  document.getElementById('main-header').style.top="-50px"
+  document.getElementById('results-container').style.marginTop="-100px"
   const ismobile = window.matchMedia("(max-width: 767px)").matches;
   if (ismobile) {
     document.getElementById('header').style.height = "320vh";
-    document.getElementById('results-container').style.marginTop="-150px"
+    document.getElementById('results-container').style.marginTop="-200px"
   }
   const resultsCount = maxScores.length;
   const isMobileView = window.matchMedia("(max-width: 767px)").matches;
@@ -385,7 +394,7 @@ function displayResults() {
   if (resultsCount > 3 && isMobileView) {
     // Modify styles and hide/show elements
     document.getElementById("header").style.height = "540vh";
-    document.getElementById('results-container').style.marginTop="-150px"
+    document.getElementById('results-container').style.marginTop="-15 0px"
   }
 
   const resultDivs = document.querySelectorAll("#results-container > div");

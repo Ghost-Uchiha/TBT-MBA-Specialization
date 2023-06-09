@@ -224,7 +224,7 @@ h1 {
   color: #000;
   flex-direction: column;
   padding: 2.0rem;
-  transition: transform 0.3s ease;
+ top: -150px;
 }
 #req > button{
   position: relative;
@@ -299,7 +299,7 @@ h1 {
 }
 #guide{
   position: relative;
-  top: 10%;
+  top: 5%;
   left: -15%;
   width: 1400px;
  text-align: justify;
